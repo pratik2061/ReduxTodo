@@ -5,14 +5,17 @@ const initialState = {
     {
       id: 1,
       text: "second try of making CRUD app with redux.",
+      completed: false,
     },
     {
       id: 2,
       text: "Do projects",
+      completed: false,
     },
     {
       id: 3,
       text: "Redux is just amazing",
+      completed: false,
     },
   ],
 };
@@ -40,8 +43,15 @@ export const todoSlice = createSlice({
         todoToEdit.text = text;
       }
     },
+    completedTodo:(state,action)=>{
+      const {id,completed} = action.payload;
+      const complete = state.todos.find((todo)=>todo.id == id)
+      if(complete){
+        complete.completed = completed;
+      }
+    }
   },
 });
 
-export const { addTodo, removeTodo, editTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, editTodo,completedTodo } = todoSlice.actions;
 export default todoSlice.reducer;

@@ -8,10 +8,14 @@ function AddTodo() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const addHandler = (e)=>{
-    e.preventDefault()
-    dispatch(addTodo(data))
-    setData("")
-    navigate('/')
+          if(data == ""){
+            alert("input field should not be empty!!")
+          }else{
+                e.preventDefault();
+                dispatch(addTodo(data));
+                setData("");
+                navigate("/");
+          }
   }
   return (
     <div className="w-[100%] h-[80vh] flex justify-center items-center">
