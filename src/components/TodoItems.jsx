@@ -18,17 +18,30 @@ function TodoItems() {
             >
               <span className="p-[5px] mx-[10px]">
                 <input
-                defaultChecked={status}
-                onChange={()=>(setStatus((prev)=>!prev))}
-                onClick={()=>dispatch(completedTodo({
-                  id : todo.id,
-                  completed : !(todo.completed)
-                }))}
+                  defaultChecked={status}
+                  onChange={() => setStatus((prev) => !prev)}
+                  onClick={() =>
+                    dispatch(
+                      completedTodo({
+                        id: todo.id,
+                        completed: !todo.completed,
+                      })
+                    )
+                  }
                   type="checkbox"
                   className="outline-none hover:cursor-pointer"
                 />
               </span>
-              <span className={`${todo.completed ? "line-through": ""}`}> {todo.text}</span>
+              <span
+                className={`${
+                  todo.completed
+                    ? "line-through bg-red-400  text-black px-[40px] rounded-md py-[5px]"
+                    : ""
+                } `}
+              >
+                {" "}
+                {todo.text}
+              </span>
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
                 className="float-right bg-red-800 px-[10px] rounded-md text-xl"
