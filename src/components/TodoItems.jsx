@@ -22,7 +22,7 @@ function TodoItems() {
                 onChange={()=>(setStatus((prev)=>!prev))}
                 onClick={()=>dispatch(completedTodo({
                   id : todo.id,
-                  completed :(!status)
+                  completed : !(todo.completed)
                 }))}
                   type="checkbox"
                   className="outline-none hover:cursor-pointer"
